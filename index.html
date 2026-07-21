@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Нумерологічний калькулятор - 8 позицій</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background: white;
+            max-width: 700px;
+            width: 100%;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #777;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        input {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        input:focus {
+            outline: none;
+            border-color: #764ba2;
+        }
+        button {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(118, 75, 162, 0.3);
+        }
+        button:active {
+            transform: translateY(0);
+        }
+        #result {
+            margin-top: 30px;
+            display: none;
+        }
+        .result-card {
+            background: #f8f9ff;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 12px;
+            border-left: 5px solid #764ba2;
+            animation: slideIn 0.5s ease;
+        }
+        .result-card .position {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #764ba2;
+            font-weight: 700;
+        }
+        .result-card .number {
+            font-size: 32px;
+            font-weight: 800;
+            color: #333;
+            display: inline-block;
+            margin-right: 10px;
+        }
+        .result-card .title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            display: inline-block;
+        }
+        .result-card .meaning {
+            margin-top: 8px;
+            color: #666;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+        .result-card.highlight {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border-left-color: #fff;
+        }
+        .result-card.highlight .position,
+        .result-card.highlight .title,
+        .result-card.highlight .number,
+        .result-card.highlight .meaning {
+            color: white;
+        }
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .reset-btn {
+            margin-top: 15px;
+            background: #eee;
+            color: #555;
+            font-size: 14px;
+            padding: 12px;
+        }
+        .reset-btn:hover {
+            background: #ddd;
+            box-shadow: none;
+            transform: none;
+        }
+        @media (max-width: 500px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔮 Нумерологічний розрахунок</h1>
+        <p class="subtitle">Введіть дату народження для розрахунку 8 позицій долі</p>
+
+        <div class="input-group">
+            <label for="birthdate">📅 Дата народження</label>
+            <input type="date" id="birthdate">
+        </div>
+
+        <button onclick="calculate()">Розрахувати</button>
+
+        <div id="result">
+            <!-- Сюди будуть додаватися результати через JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        // ========================
+        // ВАШІ ТЛУМАЧЕННЯ ДЛЯ КОЖНОГО ЧИСЛА (1-22)
+        // ЗАМІНІТЬ ЦІ ТЕКСТИ НА СВОЇ!
+        // ========================
+        const meanings = {
+            1: "Самостійність, лідерство, індивідуальність. Ви — першовідкривач.",
+            2: "Дипломатія, співпраця, чутливість. Ви — миротворець.",
+            3: "Творчість, комунікація, радість. Ви — натхненник.",
+            4: "Стабільність, працьовитість, надійність. Ви — будівничий.",
+            5: "Свобода, зміни, пригоди. Ви — шукач.",
+            6: "Відповідальність, турбота, сім'я. Ви — захисник.",
+            7: "Мудрість, аналіз, духовність. Ви — мислитель.",
+            8: "Влада, успіх, матеріальне. Ви — управлінець.",
+            9: "Гуманізм, ідеалізм, завершення. Ви — філантроп.",
+            10: "Нове начало, циклічність, лідерство. Ви — візіонер.",
+            11: "Інтуїція, просвітлення, натхнення. Ви — провідник.",
+            12: "Творчість через дисципліну. Ви — майстер.",
+            13: "Трансформація, відродження. Ви — той, хто змінює.",
+            14: "Баланс, гармонія, помірність. Ви — рівновага.",
+            15: "Магнетизм, харизма, вплив. Ви — натхненний лідер.",
+            16: "Руйнування старого заради нового. Ви — руйнівник стереотипів.",
+            17: "Віра, натхнення, зіркова енергія. Ви — вірянин.",
+            18: "Боротьба, сила, перемога. Ви — воїн.",
+            19: "Воля, успіх, самореалізація. Ви — переможець.",
+            20: "Служіння, турбота, співчуття. Ви — служитель.",
+            21: "Світ, гармонія, всесвітня любов. Ви — світотворець.",
+            22: "Велике будівництво, матеріалізація ідей. Ви — архітектор."
+        };
+
+        // ========================
+        // ОСНОВНА ФУНКЦІЯ РОЗРАХУНКУ
+        // ========================
+        function reduceTo22(number) {
+            // Якщо число більше 22, віднімаємо 22
+            while (number > 22) {
+                number -= 22;
+            }
+            return number;
+        }
+
+        function calculate() {
+            const input = document.getElementById('birthdate');
+            const resultDiv = document.getElementById('result');
+            
+            if (!input.value) {
+                alert('Будь ласка, введіть дату народження');
+                return;
+            }
+
+            // Розбиваємо дату на день, місяць, рік
+            const parts = input.value.split('-');
+            const year = parseInt(parts[0]);
+            const month = parseInt(parts[1]);
+            const day = parseInt(parts[2]);
+
+            // ВАША ЛОГІКА РОЗРАХУНКІВ
+            // 1) Дитинство юність = День народження
+            const pos1 = reduceTo22(day);
+            
+            // 2) Зрілість (уроки дорослішання) = Місяць народження
+            const pos2 = reduceTo22(month);
+            
+            // 3) Поважний вік, підсумок = Рік народження (сума цифр року)
+            let yearSum = 0;
+            let yearStr = year.toString();
+            for (let char of yearStr) {
+                yearSum += parseInt(char);
+            }
+            const pos3 = reduceTo22(yearSum);
+            
+            // 4) Страхи блоки = Позиція 1 + Позиція 2
+            const pos4 = reduceTo22(pos1 + pos2);
+            
+            // 5) Талант (що важливо) = Позиція 2 + Позиція 3
+            const pos5 = reduceTo22(pos2 + pos3);
+            
+            // 6) Дар = Позиція 4 + Позиція 5
+            const pos6 = reduceTo22(pos4 + pos5);
+            
+            // 7) Місія = Позиція 3 + Позиція 4
+            const pos7 = reduceTo22(pos3 + pos4);
+            
+            // 8) Зверхдар = Позиція 2 + Позиція 6
+            const pos8 = reduceTo22(pos2 + pos6);
+
+            // Збираємо всі позиції в масив для зручності
+            const positions = [
+                { num: pos1, title: "Дитинство та юність", desc: "Ваші ранні роки, формування особистості" },
+                { num: pos2, title: "Зрілість (уроки дорослішання)", desc: "Основні життєві уроки та виклики" },
+                { num: pos3, title: "Поважний вік, підсумок", desc: "Мудрість років, головний підсумок життя" },
+                { num: pos4, title: "Страхи та блоки", desc: "Те, що стримує, внутрішні обмеження" },
+                { num: pos5, title: "Талант", desc: "Ваша головна здібність, що важливо реалізувати" },
+                { num: pos6, title: "Дар", desc: "Унікальний дар, який ви отримали від народження" },
+                { num: pos7, title: "Місія", desc: "Головне призначення у цьому житті" },
+                { num: pos8, title: "Зверхдар", desc: "Надможливість, найвищий прояв вашої сутності" }
+            ];
+
+            // Будуємо HTML-результати
+            let html = '';
+            positions.forEach((pos, index) => {
+                const isMain = (index === 7); // Зверхдар - виділяємо
+                const meaning = meanings[pos.num] || `Тлумачення для числа ${pos.num} ще не додано`;
+                
+                html += `
+                    <div class="result-card ${isMain ? 'highlight' : ''}">
+                        <div class="position">Позиція ${index + 1}</div>
+                        <div>
+                            <span class="number">${pos.num}</span>
+                            <span class="title">${pos.title}</span>
+                        </div>
+                        <div class="meaning">
+                            <strong>${pos.desc}</strong><br>
+                            ${meaning}
+                        </div>
+                    </div>
+                `;
+            });
+
+            // Додаємо кнопку скидання
+            html += `
+                <button class="reset-btn" onclick="resetResults()">Очистити результати</button>
+            `;
+
+            resultDiv.innerHTML = html;
+            resultDiv.style.display = 'block';
+
+            // Прокручуємо до результатів
+            resultDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function resetResults() {
+            document.getElementById('result').style.display = 'none';
+            document.getElementById('result').innerHTML = '';
+            document.getElementById('birthdate').value = '';
+        }
+    </script>
+</body>
+</html>
