@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Нумерологічний калькулятор - 8 позицій</title>
+    <title>Шлях Героя - Калькулятор Архетипів</title>
     <style>
         * {
             margin: 0;
@@ -31,21 +31,36 @@
             margin-top: 10px;
         }
 
-        h1 {
+        /* ===== НОВА НАЗВА ===== */
+        .main-title {
             text-align: center;
+            font-size: 28px;
+            font-weight: 800;
             color: #3d2113;
-            font-size: 24px;
-            margin-bottom: 4px;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             text-shadow: 1px 1px 0 rgba(184, 149, 106, 0.3);
+            line-height: 1.2;
         }
 
-        .subtitle {
+        .main-title span {
+            color: #8b6b3c;
+        }
+
+        .sub-title {
             text-align: center;
+            font-size: 14px;
             color: #6b4c33;
-            font-size: 13px;
-            margin-bottom: 20px;
-            font-weight: 500;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-top: 2px;
+            margin-bottom: 16px;
+            border-bottom: 2px solid #b8956a;
+            padding-bottom: 12px;
+        }
+
+        .sub-title span {
+            color: #8b6b3c;
         }
 
         .input-group {
@@ -100,11 +115,6 @@
             font-weight: 700;
             color: #8b6b3c;
             padding: 0 2px;
-        }
-
-        /* Сховати стандартний календар */
-        input[type="date"] {
-            display: none;
         }
 
         /* ===== КНОПКИ ===== */
@@ -259,6 +269,50 @@
             transform: translateY(-2px);
         }
 
+        /* ===== ПОСИЛАННЯ НА TELEGRAM ===== */
+        .telegram-link {
+            margin-top: 20px;
+            padding: 16px;
+            text-align: center;
+            background: linear-gradient(145deg, #3d2113, #5c3a20);
+            border-radius: 16px;
+            border: 2px solid #b8956a;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .telegram-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(92, 58, 32, 0.4);
+        }
+
+        .telegram-link a {
+            color: #d4a854;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .telegram-link a:hover {
+            color: #f5ede4;
+        }
+
+        .telegram-link .telegram-icon {
+            font-size: 28px;
+        }
+
+        .telegram-link .telegram-text {
+            font-size: 14px;
+            font-weight: 400;
+            color: #b8956a;
+            display: block;
+            margin-top: 4px;
+        }
+
         /* ===== АДАПТИВ ===== */
         @media (max-width: 500px) {
             .container {
@@ -266,8 +320,14 @@
                 border-radius: 18px;
             }
 
-            h1 {
-                font-size: 20px;
+            .main-title {
+                font-size: 22px;
+                letter-spacing: 2px;
+            }
+
+            .sub-title {
+                font-size: 11px;
+                letter-spacing: 3px;
             }
 
             .date-input-wrapper input {
@@ -306,6 +366,14 @@
                 font-size: 13px;
                 padding: 8px 12px;
             }
+
+            .telegram-link a {
+                font-size: 16px;
+            }
+
+            .telegram-link .telegram-icon {
+                font-size: 24px;
+            }
         }
 
         @media (max-width: 380px) {
@@ -313,8 +381,13 @@
                 padding: 12px 10px 20px;
             }
 
-            h1 {
-                font-size: 17px;
+            .main-title {
+                font-size: 18px;
+            }
+
+            .sub-title {
+                font-size: 10px;
+                letter-spacing: 2px;
             }
 
             .date-input-wrapper input {
@@ -336,12 +409,20 @@
             .result-card .number {
                 font-size: 22px;
             }
+
+            .telegram-link a {
+                font-size: 14px;
+            }
         }
 
         @media (min-width: 768px) {
             .container {
                 max-width: 550px;
                 padding: 35px 30px 40px;
+            }
+
+            .main-title {
+                font-size: 34px;
             }
 
             .date-input-wrapper input {
@@ -355,7 +436,6 @@
             }
         }
 
-        /* Стиль для автозаповнення */
         input:-webkit-autofill {
             -webkit-box-shadow: 0 0 0 1000px #fcf8f2 inset !important;
             -webkit-text-fill-color: #2c1810 !important;
@@ -364,8 +444,13 @@
 </head>
 <body>
     <div class="container">
-        <h1>🔮 Нумерологічний розрахунок</h1>
-        <p class="subtitle">Введіть дату народження вручну (ДД.ММ.РРРР)</p>
+        <!-- ===== НОВА НАЗВА ===== -->
+        <div class="main-title">
+            Шлях <span>Героя</span>
+        </div>
+        <div class="sub-title">
+            <span>✧</span> Калькулятор Архетипів <span>✧</span>
+        </div>
 
         <div class="input-group">
             <label for="day">📅 Ваша дата народження</label>
@@ -381,6 +466,17 @@
         <button onclick="calculate()">✨ Розрахувати</button>
 
         <div id="result"></div>
+
+        <!-- ===== ПОСИЛАННЯ НА TELEGRAM ===== -->
+        <div class="telegram-link">
+            <a href="https://t.me/arxitipnumerolog" target="_blank">
+                <span class="telegram-icon">📲</span>
+                <div>
+                    @arxitipnumerolog
+                    <span class="telegram-text">Підписуйтесь на Telegram-канал</span>
+                </div>
+            </a>
+        </div>
     </div>
 
     <script>
@@ -612,20 +708,24 @@
             const monthInput = document.getElementById('month');
             const yearInput = document.getElementById('year');
 
-            // Перехід після заповнення
             dayInput.addEventListener('input', function() {
+                this.value = this.value.replace(/\D/g, '').slice(0, 2);
                 if (this.value.length === 2) {
                     monthInput.focus();
                 }
             });
 
             monthInput.addEventListener('input', function() {
+                this.value = this.value.replace(/\D/g, '').slice(0, 2);
                 if (this.value.length === 2) {
                     yearInput.focus();
                 }
             });
 
-            // Перехід по Enter
+            yearInput.addEventListener('input', function() {
+                this.value = this.value.replace(/\D/g, '').slice(0, 4);
+            });
+
             dayInput.addEventListener('keydown', function(e) {
                 if (e.key === 'Enter') {
                     if (this.value.length === 2) {
@@ -652,7 +752,6 @@
                 }
             });
 
-            // Автофокус на перше поле
             dayInput.focus();
         });
     </script>
