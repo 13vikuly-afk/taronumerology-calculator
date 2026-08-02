@@ -12,8 +12,8 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #2c1810, #4a2818, #2c1810);
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: linear-gradient(135deg, #1a0f0a, #3d2113, #1a0f0a);
             min-height: 100vh;
             padding: 15px;
             display: flex;
@@ -23,44 +23,46 @@
 
         .container {
             background: linear-gradient(145deg, #f5ede4, #e8dccc);
-            max-width: 480px;
+            max-width: 500px;
             width: 100%;
             padding: 25px 20px 30px;
             border-radius: 24px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 0 2px #b8956a inset;
             margin-top: 10px;
+            font-family: 'Georgia', 'Times New Roman', serif;
         }
 
-        /* ===== НОВА НАЗВА ===== */
         .main-title {
             text-align: center;
-            font-size: 28px;
-            font-weight: 800;
+            font-size: 30px;
+            font-weight: 700;
             color: #3d2113;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             text-shadow: 1px 1px 0 rgba(184, 149, 106, 0.3);
             line-height: 1.2;
+            font-family: 'Georgia', 'Times New Roman', serif;
         }
 
         .main-title span {
-            color: #8b6b3c;
+            color: #b8860b;
         }
 
         .sub-title {
             text-align: center;
-            font-size: 14px;
-            color: #6b4c33;
-            font-weight: 600;
-            letter-spacing: 4px;
+            font-size: 13px;
+            color: #8b6b3c;
+            font-weight: 700;
+            letter-spacing: 5px;
             text-transform: uppercase;
             margin-top: 2px;
             margin-bottom: 16px;
             border-bottom: 2px solid #b8956a;
             padding-bottom: 12px;
+            font-family: 'Georgia', 'Times New Roman', serif;
         }
 
         .sub-title span {
-            color: #8b6b3c;
+            color: #b8860b;
         }
 
         .input-group {
@@ -72,11 +74,11 @@
             font-weight: 700;
             color: #3d2113;
             margin-bottom: 6px;
-            font-size: 14px;
+            font-size: 15px;
             letter-spacing: 0.5px;
+            font-family: 'Georgia', 'Times New Roman', serif;
         }
 
-        /* ===== РУЧНЕ ВВЕДЕННЯ ДАТИ ===== */
         .date-input-wrapper {
             display: flex;
             gap: 8px;
@@ -86,7 +88,7 @@
         .date-input-wrapper input {
             flex: 1;
             padding: 16px 12px;
-            border: 2px solid #b8956a;
+            border: 2px solid #b8860b;
             border-radius: 14px;
             font-size: 18px;
             background: #fcf8f2;
@@ -96,6 +98,7 @@
             height: 60px;
             text-align: center;
             min-width: 0;
+            font-family: 'Georgia', 'Times New Roman', serif;
         }
 
         .date-input-wrapper input:focus {
@@ -113,25 +116,26 @@
         .date-input-wrapper .separator {
             font-size: 24px;
             font-weight: 700;
-            color: #8b6b3c;
+            color: #b8860b;
             padding: 0 2px;
+            font-family: 'Georgia', 'Times New Roman', serif;
         }
 
-        /* ===== КНОПКИ ===== */
         button {
             width: 100%;
             padding: 18px;
             background: linear-gradient(135deg, #5c3a20, #3d2113);
             color: #f5ede4;
-            border: 2px solid #b8956a;
+            border: 2px solid #b8860b;
             border-radius: 14px;
             font-size: 20px;
             font-weight: 700;
             cursor: pointer;
             transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             height: 60px;
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            font-family: 'Georgia', 'Times New Roman', serif;
         }
 
         button:hover {
@@ -146,112 +150,134 @@
         }
 
         #result {
-            margin-top: 25px;
+            margin-top: 20px;
             display: none;
         }
 
-        /* ===== КАРТКИ РЕЗУЛЬТАТІВ ===== */
-        .result-card {
-            background: linear-gradient(145deg, #f5ede4, #ece0d2);
-            border-radius: 16px;
-            padding: 18px 16px;
+        /* ===== РЕЗУЛЬТАТИ ===== */
+        .result-title {
+            text-align: center;
+            font-size: 16px;
+            font-weight: 700;
+            color: #3d2113;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #b8956a;
+            font-family: 'Georgia', 'Times New Roman', serif;
+        }
+
+        .cards-grid {
+            display: grid;
+            gap: 10px;
             margin-bottom: 12px;
-            border-left: 5px solid #b8956a;
-            animation: slideIn 0.4s ease;
-            transition: transform 0.2s;
+        }
+
+        .row-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        .row-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .row-1 {
+            grid-template-columns: 1fr;
+            max-width: 33.33%;
+            margin: 0 auto;
+        }
+
+        /* ===== НОВИЙ РЯД ДЛЯ ПОЗИЦІЙ 12, 13, 14 ===== */
+        .row-extra {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 8px;
+            padding-top: 12px;
+            border-top: 2px dashed #b8860b;
+        }
+
+        .row-extra .row-1-extra {
+            display: grid;
+            grid-template-columns: 1fr;
+            max-width: 33.33%;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .row-extra .row-2-extra {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .arcana-card {
+            background: linear-gradient(145deg, #fcf8f2, #f0e8dc);
+            border-radius: 14px;
+            padding: 14px 8px 16px;
+            text-align: center;
+            border: 2px solid #b8956a;
+            transition: transform 0.2s, box-shadow 0.2s;
             box-shadow: 0 2px 8px rgba(44, 24, 16, 0.08);
+            min-height: 90px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
-        .result-card:active {
-            transform: scale(0.98);
+        .arcana-card:active {
+            transform: scale(0.96);
         }
 
-        .result-card .position {
-            font-size: 11px;
+        .arcana-card .position-label {
+            font-size: 9px;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             color: #8b6b3c;
             font-weight: 700;
+            margin-bottom: 4px;
+            font-family: 'Georgia', 'Times New Roman', serif;
         }
 
-        .result-card .number {
-            font-size: 30px;
-            font-weight: 800;
-            color: #3d2113;
-            display: inline-block;
-            margin-right: 10px;
-        }
-
-        .result-card .title {
-            font-size: 17px;
-            font-weight: 600;
-            color: #3d2113;
-            display: inline-block;
-        }
-
-        .result-card .meaning {
-            margin-top: 8px;
-            color: #4a3224;
-            line-height: 1.6;
-            font-size: 14px;
-        }
-
-        .result-card .tarot {
-            margin-top: 10px;
-            padding: 10px 14px;
-            background: rgba(184, 149, 106, 0.15);
-            border-radius: 10px;
-            font-size: 14px;
-            color: #3d2113;
-            border-left: 3px solid #b8956a;
-            font-weight: 500;
-        }
-
-        .result-card .tarot span {
+        .arcana-card .roman-number {
+            font-size: 34px;
             font-weight: 700;
-            color: #5c3a20;
+            color: #3d2113;
+            line-height: 1;
+            margin: 2px 0;
+            font-family: 'Georgia', 'Times New Roman', serif;
         }
 
-        /* Виділена картка для Зверхдару */
-        .result-card.highlight {
+        .arcana-card .arcana-name {
+            font-size: 11px;
+            font-weight: 700;
+            color: #3d2113;
+            margin-top: 4px;
+            line-height: 1.2;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Georgia', 'Times New Roman', serif;
+        }
+
+        /* Виділена картка (Зверхдар) */
+        .arcana-card.highlight {
             background: linear-gradient(145deg, #3d2113, #5c3a20);
-            color: #f5ede4;
-            border-left-color: #d4a854;
+            border-color: #d4a854;
             box-shadow: 0 4px 20px rgba(184, 149, 106, 0.3);
         }
 
-        .result-card.highlight .position,
-        .result-card.highlight .title,
-        .result-card.highlight .number,
-        .result-card.highlight .meaning,
-        .result-card.highlight .tarot {
+        .arcana-card.highlight .position-label {
+            color: #d4a854;
+        }
+
+        .arcana-card.highlight .roman-number {
             color: #f5ede4;
         }
 
-        .result-card.highlight .tarot {
-            background: rgba(212, 168, 84, 0.15);
-            border-left-color: #d4a854;
-        }
-
-        .result-card.highlight .tarot span {
+        .arcana-card.highlight .arcana-name {
             color: #d4a854;
         }
 
-        .result-card.highlight .position {
-            color: #d4a854;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
+        /* ===== КНОПКА СКИДАННЯ ===== */
         .reset-btn {
             margin-top: 15px;
             background: #e8dccc;
@@ -261,6 +287,8 @@
             height: auto;
             border-color: #b8956a;
             text-shadow: none;
+            width: 100%;
+            font-family: 'Georgia', 'Times New Roman', serif;
         }
 
         .reset-btn:hover {
@@ -269,14 +297,14 @@
             transform: translateY(-2px);
         }
 
-        /* ===== ПОСИЛАННЯ НА TELEGRAM ===== */
+        /* ===== TELEGRAM ===== */
         .telegram-link {
             margin-top: 20px;
             padding: 16px;
             text-align: center;
             background: linear-gradient(145deg, #3d2113, #5c3a20);
             border-radius: 16px;
-            border: 2px solid #b8956a;
+            border: 2px solid #b8860b;
             transition: transform 0.3s, box-shadow 0.3s;
         }
 
@@ -295,6 +323,7 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
+            font-family: 'Georgia', 'Times New Roman', serif;
         }
 
         .telegram-link a:hover {
@@ -311,6 +340,7 @@
             color: #b8956a;
             display: block;
             margin-top: 4px;
+            font-family: 'Georgia', 'Times New Roman', serif;
         }
 
         /* ===== АДАПТИВ ===== */
@@ -321,12 +351,12 @@
             }
 
             .main-title {
-                font-size: 22px;
+                font-size: 24px;
                 letter-spacing: 2px;
             }
 
             .sub-title {
-                font-size: 11px;
+                font-size: 10px;
                 letter-spacing: 3px;
             }
 
@@ -346,25 +376,21 @@
                 height: 56px;
             }
 
-            .result-card {
-                padding: 14px 12px;
+            .arcana-card {
+                padding: 10px 6px 12px;
+                min-height: 75px;
             }
 
-            .result-card .number {
+            .arcana-card .roman-number {
                 font-size: 26px;
             }
 
-            .result-card .title {
-                font-size: 15px;
+            .arcana-card .arcana-name {
+                font-size: 9px;
             }
 
-            .result-card .meaning {
-                font-size: 13px;
-            }
-
-            .result-card .tarot {
-                font-size: 13px;
-                padding: 8px 12px;
+            .row-1, .row-1-extra {
+                max-width: 40%;
             }
 
             .telegram-link a {
@@ -382,11 +408,11 @@
             }
 
             .main-title {
-                font-size: 18px;
+                font-size: 20px;
             }
 
             .sub-title {
-                font-size: 10px;
+                font-size: 9px;
                 letter-spacing: 2px;
             }
 
@@ -406,23 +432,27 @@
                 height: 50px;
             }
 
-            .result-card .number {
+            .arcana-card .roman-number {
                 font-size: 22px;
             }
 
-            .telegram-link a {
-                font-size: 14px;
+            .arcana-card .arcana-name {
+                font-size: 8px;
+            }
+
+            .row-1, .row-1-extra {
+                max-width: 50%;
             }
         }
 
         @media (min-width: 768px) {
             .container {
-                max-width: 550px;
+                max-width: 600px;
                 padding: 35px 30px 40px;
             }
 
             .main-title {
-                font-size: 34px;
+                font-size: 36px;
             }
 
             .date-input-wrapper input {
@@ -434,6 +464,14 @@
                 height: 64px;
                 font-size: 22px;
             }
+
+            .arcana-card .roman-number {
+                font-size: 40px;
+            }
+
+            .arcana-card .arcana-name {
+                font-size: 13px;
+            }
         }
 
         input:-webkit-autofill {
@@ -444,12 +482,11 @@
 </head>
 <body>
     <div class="container">
-        <!-- ===== НОВА НАЗВА ===== -->
         <div class="main-title">
             Шлях <span>Героя</span>
         </div>
         <div class="sub-title">
-            <span>✧</span> Калькулятор Архетипів <span>✧</span>
+            <span>✦</span> Калькулятор Архетипів <span>✦</span>
         </div>
 
         <div class="input-group">
@@ -467,7 +504,6 @@
 
         <div id="result"></div>
 
-        <!-- ===== ПОСИЛАННЯ НА TELEGRAM ===== -->
         <div class="telegram-link">
             <a href="https://t.me/arxitipnumerolog" target="_blank">
                 <span class="telegram-icon">📲</span>
@@ -481,102 +517,49 @@
 
     <script>
         // ============================================================
-        // 1. ТЛУМАЧЕННЯ + ТАРО-АРХЕТИПИ (1-22)
-        //    ЗАМІНІТЬ ТЕКСТИ НА СВОЇ
+        // 1. НАЗВИ АРКАНІВ (1-22)
         // ============================================================
-        const meanings = {
-            1: {
-                text: "Самостійність, лідерство, індивідуальність. Ви — першовідкривач, який прокладає шлях для інших.",
-                tarot: "🃏 Маг — воля, майстерність, концентрація. Ви здатні матеріалізувати свої ідеї."
-            },
-            2: {
-                text: "Дипломатія, співпраця, чутливість. Ви — миротворець, що будує гармонійні стосунки.",
-                tarot: "🃏 Верховна Жриця — інтуїція, таємниці, внутрішнє знання. Довіряйте своїй інтуїції."
-            },
-            3: {
-                text: "Творчість, комунікація, радість. Ви — натхненник, який дарує світло та позитив.",
-                tarot: "🃏 Імператриця — родючість, творчість, достаток. Ви розквітаєте через любов і красу."
-            },
-            4: {
-                text: "Стабільність, працьовитість, надійність. Ви — будівничий, що створює міцний фундамент.",
-                tarot: "🃏 Імператор — влада, структура, захист. Ви будуєте порядок і безпеку."
-            },
-            5: {
-                text: "Свобода, зміни, пригоди. Ви — шукач, що постійно відкриває нові горизонти.",
-                tarot: "🃏 Ієрофант — мудрість, традиції, навчання. Ви передаєте знання та наставляєте."
-            },
-            6: {
-                text: "Відповідальність, турбота, сім'я. Ви — захисник, який створює гармонію в оточенні.",
-                tarot: "🃏 Закохані — вибір, любов, гармонія. Ваша сила — у сердечних зв'язках."
-            },
-            7: {
-                text: "Мудрість, аналіз, духовність. Ви — мислитель, що шукає глибинні істини.",
-                tarot: "🃏 Колісниця — перемога, контроль, рух. Ви керуєте своєю долею через рішучість."
-            },
-            8: {
-                text: "Влада, успіх, матеріальне. Ви — управлінець, що досягає вершин через зусилля.",
-                tarot: "🃏 Сила — внутрішня міць, витривалість, мужність. Ваша сила — у доброті та самовладанні."
-            },
-            9: {
-                text: "Гуманізм, ідеалізм, завершення. Ви — філантроп, який несе світло та допомогу.",
-                tarot: "🃏 Відлюдник — мудрість, пошук істини, внутрішнє світло. Ви знаходите відповіді всередині."
-            },
-            10: {
-                text: "Нове начало, циклічність, лідерство. Ви — візіонер, що надихає на зміни.",
-                tarot: "🃏 Колесо Фортуни — доля, удача, зміни. Життя постійно обертається, і ви готові до цього."
-            },
-            11: {
-                text: "Інтуїція, просвітлення, натхнення. Ви — провідник між світами, що бачить більше.",
-                tarot: "🃏 Справедливість — рівновага, карма, чесність. Ваш шлях — у правді та рівновазі."
-            },
-            12: {
-                text: "Творчість через дисципліну. Ви — майстер, що доводить справу до досконалості.",
-                tarot: "🃏 Повішений — жертва, новий погляд, звільнення. Через відпускання ви здобуваєте більше."
-            },
-            13: {
-                text: "Трансформація, відродження. Ви — той, хто проходить через кризи та стає сильнішим.",
-                tarot: "🃏 Смерть — завершення, трансформація, нове народження. Старе йде, щоб звільнити місце новому."
-            },
-            14: {
-                text: "Баланс, гармонія, помірність. Ви — рівновага, що поєднує протилежності.",
-                tarot: "🃏 Помірність — баланс, терпіння, гармонія. Ви з'єднуєте небо і землю."
-            },
-            15: {
-                text: "Магнетизм, харизма, вплив. Ви — натхненний лідер, що зачаровує оточення.",
-                tarot: "🃏 Диявол — спокуса, пристрасті, звільнення. Ваша сила — у пізнанні своїх бажань."
-            },
-            16: {
-                text: "Руйнування старого заради нового. Ви — руйнівник стереотипів, що будує з попелу.",
-                tarot: "🃏 Вежа — руйнація, одкровення, оновлення. Через кризу ви знаходите свободу."
-            },
-            17: {
-                text: "Віра, натхнення, зіркова енергія. Ви — вірянин, який несе світло та надію.",
-                tarot: "🃏 Зірка — надія, натхнення, спокій. Ви світите іншим своїм внутрішнім світлом."
-            },
-            18: {
-                text: "Боротьба, сила, перемога. Ви — воїн, що долає перешкоди та виходить переможцем.",
-                tarot: "🃏 Місяць — інтуїція, сни, підсвідомість. Довіряйте своїм снам та внутрішнім знанням."
-            },
-            19: {
-                text: "Воля, успіх, самореалізація. Ви — переможець, що досягає вершин власної долі.",
-                tarot: "🃏 Сонце — успіх, радість, достаток. Ви сяєте та надихаєте своїм теплом."
-            },
-            20: {
-                text: "Служіння, турбота, співчуття. Ви — служитель, що віддає себе на благо інших.",
-                tarot: "🃏 Суд — пробудження, відродження, усвідомлення. Ви приходите до нової свідомості."
-            },
-            21: {
-                text: "Світ, гармонія, всесвітня любов. Ви — світотворець, що несе мир та єднання.",
-                tarot: "🃏 Світ — завершення, цілісність, здійснення. Ви досягаєте повної гармонії зі світом."
-            },
-            22: {
-                text: "Велике будівництво, матеріалізація ідей. Ви — архітектор реальності, творець майбутнього.",
-                tarot: "🃏 Блазень — новий початок, невинність, довіра до життя. Ви починаєте новий цикл з чистим серцем."
-            }
+        const arcanaNames = {
+            1: "Маг",
+            2: "Верховна Жриця",
+            3: "Імператриця",
+            4: "Імператор",
+            5: "Ієрофант",
+            6: "Закохані",
+            7: "Колісниця",
+            8: "Сила",
+            9: "Відлюдник",
+            10: "Колесо Фортуни",
+            11: "Справедливість",
+            12: "Повішений",
+            13: "Смерть",
+            14: "Помірність",
+            15: "Диявол",
+            16: "Вежа",
+            17: "Зірка",
+            18: "Місяць",
+            19: "Сонце",
+            20: "Суд",
+            21: "Світ",
+            22: "Блазень"
         };
 
         // ============================================================
-        // 2. ЛОГІКА РОЗРАХУНКІВ
+        // 2. ПЕРЕТВОРЕННЯ НА РИМСЬКЕ
+        // ============================================================
+        function toRoman(num) {
+            const romanMap = {
+                1: 'I', 2: 'II', 3: 'III', 4: 'IV', 5: 'V',
+                6: 'VI', 7: 'VII', 8: 'VIII', 9: 'IX', 10: 'X',
+                11: 'XI', 12: 'XII', 13: 'XIII', 14: 'XIV', 15: 'XV',
+                16: 'XVI', 17: 'XVII', 18: 'XVIII', 19: 'XIX', 20: 'XX',
+                21: 'XXI', 22: 'XXII'
+            };
+            return romanMap[num] || num;
+        }
+
+        // ============================================================
+        // 3. ЛОГІКА РОЗРАХУНКІВ
         // ============================================================
         function reduceTo22(number) {
             while (number > 22) {
@@ -595,100 +578,116 @@
             const month = parseInt(monthInput.value);
             const year = parseInt(yearInput.value);
 
-            // Валідація
             if (!day || !month || !year) {
                 alert('Будь ласка, заповніть всі поля: день, місяць та рік');
                 return;
             }
 
-            if (day < 1 || day > 31) {
-                alert('День має бути від 1 до 31');
+            if (day < 1 || day > 31 || month < 1 || month > 12 || year < 1900 || year > 2100) {
+                alert('Будь ласка, введіть коректну дату');
                 return;
             }
 
-            if (month < 1 || month > 12) {
-                alert('Місяць має бути від 1 до 12');
-                return;
-            }
-
-            if (year < 1900 || year > 2100) {
-                alert('Рік має бути від 1900 до 2100');
-                return;
-            }
-
-            // Позиція 1: День народження
+            // ===== ОСНОВНІ ПОЗИЦІЇ (1-8) =====
             const pos1 = reduceTo22(day);
-
-            // Позиція 2: Місяць народження
             const pos2 = reduceTo22(month);
 
-            // Позиція 3: Рік народження (сума цифр)
             let yearSum = 0;
-            const yearStr = year.toString();
-            for (const char of yearStr) {
+            for (const char of year.toString()) {
                 yearSum += parseInt(char);
             }
             const pos3 = reduceTo22(yearSum);
 
-            // Позиція 4: Страхи блоки = 1 + 2
             const pos4 = reduceTo22(pos1 + pos2);
-
-            // Позиція 5: Талант = 2 + 3
             const pos5 = reduceTo22(pos2 + pos3);
-
-            // Позиція 6: Дар = 4 + 5
             const pos6 = reduceTo22(pos4 + pos5);
-
-            // Позиція 7: Місія = 3 + 4
             const pos7 = reduceTo22(pos3 + pos4);
-
-            // Позиція 8: Зверхдар = 2 + 6
             const pos8 = reduceTo22(pos2 + pos6);
 
-            const positions = [
-                { num: pos1, title: "Дитинство та юність", desc: "Ранні роки, формування особистості" },
-                { num: pos2, title: "Зрілість (уроки дорослішання)", desc: "Основні життєві уроки" },
-                { num: pos3, title: "Поважний вік, підсумок", desc: "Мудрість років, головний підсумок життя" },
-                { num: pos4, title: "Страхи та блоки", desc: "Внутрішні обмеження, що стримують" },
-                { num: pos5, title: "Талант", desc: "Головна здібність, яку варто реалізувати" },
-                { num: pos6, title: "Дар", desc: "Унікальний дар від народження" },
-                { num: pos7, title: "Місія", desc: "Головне призначення у житті" },
-                { num: pos8, title: "Зверхдар", desc: "Надможливість, найвищий прояв сутності" }
+            // ===== ДОДАТКОВІ ПОЗИЦІЇ =====
+            const pos12 = reduceTo22(pos7 + pos8);
+            const pos13 = reduceTo22(pos1 + pos4 + pos6);
+            const pos14 = reduceTo22(pos3 + pos5 + pos6);
+
+            // ===== МАСИВИ =====
+            const mainPositions = [
+                { num: pos1, label: "1", title: "Дитинство" },
+                { num: pos2, label: "2", title: "Зрілість" },
+                { num: pos3, label: "3", title: "Підсумок" },
+                { num: pos4, label: "4", title: "Страхи" },
+                { num: pos5, label: "5", title: "Талант" },
+                { num: pos6, label: "6", title: "Дар" },
+                { num: pos7, label: "7", title: "Місія" },
+                { num: pos8, label: "8", title: "Зверхдар" }
             ];
 
-            let html = '';
-            positions.forEach((pos, index) => {
-                const isMain = (index === 7);
-                const data = meanings[pos.num] || {
-                    text: `Тлумачення для числа ${pos.num} ще не додано`,
-                    tarot: `🃏 Аркан ${pos.num} — додайте опис`
-                };
+            // ===== НОВИЙ ПОРЯДОК: 12 окремо, 13 і 14 разом =====
+            const extraPosition12 = { num: pos12, label: "12", title: "Синтез" };
+            const extraPosition13 = { num: pos13, label: "13", title: "Душа" };
+            const extraPosition14 = { num: pos14, label: "14", title: "Шлях" };
 
-                html += `
-                    <div class="result-card ${isMain ? 'highlight' : ''}">
-                        <div class="position">Позиція ${index + 1}</div>
-                        <div>
-                            <span class="number">${pos.num}</span>
-                            <span class="title">${pos.title}</span>
-                        </div>
-                        <div class="meaning">
-                            <strong>${pos.desc}</strong><br>
-                            ${data.text}
-                        </div>
-                        <div class="tarot">
-                            <span>Таро-архетип:</span> ${data.tarot}
-                        </div>
+            // ===== БУДУЄМО HTML =====
+            let html = `
+                <div class="result-title">✦ Ваші Архетипи ✦</div>
+                
+                <!-- Ряд 1: Позиції 1, 2, 3 -->
+                <div class="cards-grid row-3">
+                    ${renderCard(mainPositions[0], false)}
+                    ${renderCard(mainPositions[1], false)}
+                    ${renderCard(mainPositions[2], false)}
+                </div>
+
+                <!-- Ряд 2: Позиції 4, 5 -->
+                <div class="cards-grid row-2">
+                    ${renderCard(mainPositions[3], false)}
+                    ${renderCard(mainPositions[4], false)}
+                </div>
+
+                <!-- Ряд 3: Позиція 6 -->
+                <div class="cards-grid row-1">
+                    ${renderCard(mainPositions[5], false)}
+                </div>
+
+                <!-- Ряд 4: Позиції 7, 8 (8 - виділена) -->
+                <div class="cards-grid row-2">
+                    ${renderCard(mainPositions[6], false)}
+                    ${renderCard(mainPositions[7], true)}
+                </div>
+
+                <!-- ===== НОВІ ПОЗИЦІЇ (12, 13, 14) ===== -->
+                <div class="row-extra">
+                    <!-- Позиція 12 - окремий рядок -->
+                    <div class="row-1-extra">
+                        ${renderCard(extraPosition12, false)}
                     </div>
-                `;
-            });
+                    
+                    <!-- Позиції 13 та 14 - разом -->
+                    <div class="row-2-extra">
+                        ${renderCard(extraPosition13, false)}
+                        ${renderCard(extraPosition14, false)}
+                    </div>
+                </div>
 
-            html += `
                 <button class="reset-btn" onclick="resetResults()">🔄 Очистити результати</button>
             `;
 
             resultDiv.innerHTML = html;
             resultDiv.style.display = 'block';
             resultDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Функція для рендерингу однієї картки
+        function renderCard(pos, isHighlight) {
+            const name = arcanaNames[pos.num] || `Аркан ${pos.num}`;
+            const roman = toRoman(pos.num);
+
+            return `
+                <div class="arcana-card ${isHighlight ? 'highlight' : ''}">
+                    <div class="position-label">Поз. ${pos.label}</div>
+                    <div class="roman-number">${roman}</div>
+                    <div class="arcana-name">${name}</div>
+                </div>
+            `;
         }
 
         function resetResults() {
@@ -701,7 +700,7 @@
         }
 
         // ============================================================
-        // 3. АВТОМАТИЧНЕ ПЕРЕХОДЖЕННЯ МІЖ ПОЛЯМИ
+        // 4. АВТОМАТИЧНЕ ПЕРЕХОДЖЕННЯ
         // ============================================================
         document.addEventListener('DOMContentLoaded', function() {
             const dayInput = document.getElementById('day');
@@ -710,16 +709,12 @@
 
             dayInput.addEventListener('input', function() {
                 this.value = this.value.replace(/\D/g, '').slice(0, 2);
-                if (this.value.length === 2) {
-                    monthInput.focus();
-                }
+                if (this.value.length === 2) monthInput.focus();
             });
 
             monthInput.addEventListener('input', function() {
                 this.value = this.value.replace(/\D/g, '').slice(0, 2);
-                if (this.value.length === 2) {
-                    yearInput.focus();
-                }
+                if (this.value.length === 2) yearInput.focus();
             });
 
             yearInput.addEventListener('input', function() {
@@ -727,29 +722,15 @@
             });
 
             dayInput.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter') {
-                    if (this.value.length === 2) {
-                        monthInput.focus();
-                    } else {
-                        monthInput.focus();
-                    }
-                }
+                if (e.key === 'Enter') monthInput.focus();
             });
 
             monthInput.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter') {
-                    if (this.value.length === 2) {
-                        yearInput.focus();
-                    } else {
-                        yearInput.focus();
-                    }
-                }
+                if (e.key === 'Enter') yearInput.focus();
             });
 
             yearInput.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter') {
-                    calculate();
-                }
+                if (e.key === 'Enter') calculate();
             });
 
             dayInput.focus();
