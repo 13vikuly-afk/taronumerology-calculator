@@ -13,7 +13,7 @@
 
         body {
             font-family: 'Georgia', 'Times New Roman', serif;
-            background: linear-gradient(135deg, #1a0f0a, #3d2113, #1a0f0a);
+            background: #1a0f0a;
             min-height: 100vh;
             padding: 15px;
             display: flex;
@@ -21,15 +21,36 @@
             align-items: flex-start;
         }
 
+        /* ===== ФОН ІЗ КАРТИНКОЮ "ШЛЯХ ГЕРОЯ" ===== */
         .container {
-            background: linear-gradient(145deg, #f5ede4, #e8dccc);
+            background: linear-gradient(145deg, rgba(245, 237, 228, 0.92), rgba(232, 220, 204, 0.92)),
+                        url('https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=600&h=800&fit=crop') center/cover no-repeat;
             max-width: 500px;
             width: 100%;
             padding: 25px 20px 30px;
             border-radius: 24px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 0 2px #b8956a inset;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 0 2px #b8860b inset;
             margin-top: 10px;
             font-family: 'Georgia', 'Times New Roman', serif;
+            backdrop-filter: blur(2px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* ===== ДЕКОРАТИВНИЙ ЕЛЕМЕНТ "ШЛЯХ" ===== */
+        .hero-path {
+            text-align: center;
+            margin-bottom: 12px;
+            font-size: 12px;
+            letter-spacing: 6px;
+            color: #8b6b3c;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(184, 149, 106, 0.3);
+            padding-bottom: 8px;
+        }
+        .hero-path span {
+            color: #b8860b;
         }
 
         .main-title {
@@ -91,7 +112,7 @@
             border: 2px solid #b8860b;
             border-radius: 14px;
             font-size: 18px;
-            background: #fcf8f2;
+            background: rgba(252, 248, 242, 0.9);
             transition: border-color 0.3s, box-shadow 0.3s;
             color: #2c1810;
             font-weight: 600;
@@ -185,7 +206,7 @@
             margin: 0 auto;
         }
 
-        /* ===== НОВИЙ РЯД ДЛЯ ПОЗИЦІЙ 12, 13, 14 ===== */
+        /* ===== НОВІ ПОЗИЦІЇ 12, 13, 14 ===== */
         .row-extra {
             display: flex;
             flex-direction: column;
@@ -209,19 +230,21 @@
             gap: 10px;
         }
 
+        /* ===== КАРТКА АРКАНУ ===== */
         .arcana-card {
-            background: linear-gradient(145deg, #fcf8f2, #f0e8dc);
+            background: rgba(252, 248, 242, 0.92);
             border-radius: 14px;
-            padding: 14px 8px 16px;
+            padding: 12px 6px 14px;
             text-align: center;
             border: 2px solid #b8956a;
             transition: transform 0.2s, box-shadow 0.2s;
             box-shadow: 0 2px 8px rgba(44, 24, 16, 0.08);
-            min-height: 90px;
+            min-height: 100px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            backdrop-filter: blur(4px);
         }
 
         .arcana-card:active {
@@ -234,12 +257,20 @@
             letter-spacing: 2px;
             color: #8b6b3c;
             font-weight: 700;
-            margin-bottom: 4px;
             font-family: 'Georgia', 'Times New Roman', serif;
         }
 
+        .arcana-card .position-name {
+            font-size: 11px;
+            font-weight: 700;
+            color: #3d2113;
+            letter-spacing: 1px;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            margin-bottom: 2px;
+        }
+
         .arcana-card .roman-number {
-            font-size: 34px;
+            font-size: 32px;
             font-weight: 700;
             color: #3d2113;
             line-height: 1;
@@ -251,30 +282,77 @@
             font-size: 11px;
             font-weight: 700;
             color: #3d2113;
-            margin-top: 4px;
             line-height: 1.2;
             text-transform: uppercase;
             letter-spacing: 1px;
             font-family: 'Georgia', 'Times New Roman', serif;
         }
 
-        /* Виділена картка (Зверхдар) */
+        /* ===== ПОЗНАЧКИ (РІД + ТИП) ===== */
+        .arcana-card .tags {
+            display: flex;
+            gap: 6px;
+            margin-top: 4px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .arcana-card .tag {
+            font-size: 8px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-family: 'Georgia', 'Times New Roman', serif;
+        }
+
+        .tag-male {
+            background: #2c5f7a;
+            color: #fff;
+        }
+        .tag-female {
+            background: #8b3a5a;
+            color: #fff;
+        }
+        .tag-neutral {
+            background: #6b6b6b;
+            color: #fff;
+        }
+        .tag-spiritual {
+            background: #3d6b3d;
+            color: #fff;
+        }
+        .tag-material {
+            background: #8b6b3c;
+            color: #fff;
+        }
+        .tag-neutral-type {
+            background: #6b6b6b;
+            color: #fff;
+        }
+
+        /* Виділена картка (Зверхдар / Дар) */
         .arcana-card.highlight {
             background: linear-gradient(145deg, #3d2113, #5c3a20);
             border-color: #d4a854;
             box-shadow: 0 4px 20px rgba(184, 149, 106, 0.3);
         }
 
-        .arcana-card.highlight .position-label {
-            color: #d4a854;
-        }
-
-        .arcana-card.highlight .roman-number {
+        .arcana-card.highlight .position-label,
+        .arcana-card.highlight .position-name,
+        .arcana-card.highlight .roman-number,
+        .arcana-card.highlight .arcana-name {
             color: #f5ede4;
         }
 
-        .arcana-card.highlight .arcana-name {
-            color: #d4a854;
+        .arcana-card.highlight .tag-male,
+        .arcana-card.highlight .tag-female,
+        .arcana-card.highlight .tag-neutral,
+        .arcana-card.highlight .tag-spiritual,
+        .arcana-card.highlight .tag-material,
+        .arcana-card.highlight .tag-neutral-type {
+            opacity: 0.9;
         }
 
         /* ===== КНОПКА СКИДАННЯ ===== */
@@ -377,19 +455,29 @@
             }
 
             .arcana-card {
-                padding: 10px 6px 12px;
-                min-height: 75px;
+                padding: 10px 4px 12px;
+                min-height: 80px;
             }
 
             .arcana-card .roman-number {
-                font-size: 26px;
+                font-size: 24px;
             }
 
             .arcana-card .arcana-name {
                 font-size: 9px;
             }
 
-            .row-1, .row-1-extra {
+            .arcana-card .position-name {
+                font-size: 9px;
+            }
+
+            .arcana-card .tag {
+                font-size: 7px;
+                padding: 1px 6px;
+            }
+
+            .row-1,
+            .row-1-extra {
                 max-width: 40%;
             }
 
@@ -433,14 +521,19 @@
             }
 
             .arcana-card .roman-number {
-                font-size: 22px;
+                font-size: 20px;
             }
 
             .arcana-card .arcana-name {
                 font-size: 8px;
             }
 
-            .row-1, .row-1-extra {
+            .arcana-card .position-name {
+                font-size: 8px;
+            }
+
+            .row-1,
+            .row-1-extra {
                 max-width: 50%;
             }
         }
@@ -466,22 +559,31 @@
             }
 
             .arcana-card .roman-number {
-                font-size: 40px;
+                font-size: 38px;
             }
 
             .arcana-card .arcana-name {
                 font-size: 13px;
             }
+
+            .arcana-card .position-name {
+                font-size: 13px;
+            }
         }
 
         input:-webkit-autofill {
-            -webkit-box-shadow: 0 0 0 1000px #fcf8f2 inset !important;
+            -webkit-box-shadow: 0 0 0 1000px rgba(252, 248, 242, 0.9) inset !important;
             -webkit-text-fill-color: #2c1810 !important;
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- ===== ДЕКОРАТИВНИЙ ЕЛЕМЕНТ "ШЛЯХ" ===== -->
+        <div class="hero-path">
+            <span>✦</span> Шлях <span>✦</span>
+        </div>
+
         <div class="main-title">
             Шлях <span>Героя</span>
         </div>
@@ -517,35 +619,52 @@
 
     <script>
         // ============================================================
-        // 1. НАЗВИ АРКАНІВ (1-22)
+        // 1. ДАНІ ПРО АРКАНИ (1-22)
         // ============================================================
-        const arcanaNames = {
-            1: "Маг",
-            2: "Верховна Жриця",
-            3: "Імператриця",
-            4: "Імператор",
-            5: "Ієрофант",
-            6: "Закохані",
-            7: "Колісниця",
-            8: "Сила",
-            9: "Відлюдник",
-            10: "Колесо Фортуни",
-            11: "Справедливість",
-            12: "Повішений",
-            13: "Смерть",
-            14: "Помірність",
-            15: "Диявол",
-            16: "Вежа",
-            17: "Зірка",
-            18: "Місяць",
-            19: "Сонце",
-            20: "Суд",
-            21: "Світ",
-            22: "Блазень"
+        const arcanaData = {
+            1: { name: "Маг", gender: "Чоловічий", genderTag: "male", type: "Матеріальний", typeTag: "material" },
+            2: { name: "Жриця", gender: "Жіночий", genderTag: "female", type: "Духовний", typeTag: "spiritual" },
+            3: { name: "Імператриця", gender: "Жіночий", genderTag: "female", type: "Матеріальний", typeTag: "material" },
+            4: { name: "Імператор", gender: "Чоловічий", genderTag: "male", type: "Матеріальний", typeTag: "material" },
+            5: { name: "Ієрофант", gender: "Чоловічий", genderTag: "male", type: "Духовний", typeTag: "spiritual" },
+            6: { name: "Закохані", gender: "Нейтральний", genderTag: "neutral", type: "Нейтральний", typeTag: "neutral-type" },
+            7: { name: "Колісниця", gender: "Чоловічий", genderTag: "male", type: "Матеріальний", typeTag: "material" },
+            8: { name: "Справедливість", gender: "Нейтральний", genderTag: "neutral", type: "Нейтральний", typeTag: "neutral-type" },
+            9: { name: "Відлюдник", gender: "Чоловічий", genderTag: "male", type: "Духовний", typeTag: "spiritual" },
+            10: { name: "Колесо Фортуни", gender: "Нейтральний", genderTag: "neutral", type: "Нейтральний", typeTag: "neutral-type" },
+            11: { name: "Сила", gender: "Жіночий", genderTag: "female", type: "Матеріальний", typeTag: "material" },
+            12: { name: "Повішений", gender: "Нейтральний", genderTag: "neutral", type: "Духовний", typeTag: "spiritual" },
+            13: { name: "Смерть", gender: "Нейтральний", genderTag: "neutral", type: "Духовний", typeTag: "spiritual" },
+            14: { name: "Помірність", gender: "Нейтральний", genderTag: "neutral", type: "Духовний", typeTag: "spiritual" },
+            15: { name: "Диявол", gender: "Чоловічий", genderTag: "male", type: "Матеріальний", typeTag: "material" },
+            16: { name: "Вежа", gender: "Чоловічий", genderTag: "male", type: "Матеріальний", typeTag: "material" },
+            17: { name: "Зірка", gender: "Жіночий", genderTag: "female", type: "Духовний", typeTag: "spiritual" },
+            18: { name: "Місяць", gender: "Жіночий", genderTag: "female", type: "Духовний", typeTag: "spiritual" },
+            19: { name: "Сонце", gender: "Чоловічий", genderTag: "male", type: "Матеріальний", typeTag: "material" },
+            20: { name: "Суд", gender: "Нейтральний", genderTag: "neutral", type: "Духовний", typeTag: "spiritual" },
+            21: { name: "Світ", gender: "Нейтральний", genderTag: "neutral", type: "Нейтральний", typeTag: "neutral-type" },
+            22: { name: "Блазень", gender: "Нейтральний", genderTag: "neutral", type: "Нейтральний", typeTag: "neutral-type" }
         };
 
         // ============================================================
-        // 2. ПЕРЕТВОРЕННЯ НА РИМСЬКЕ
+        // 2. НАЗВИ ПОЗИЦІЙ (УКРАЇНСЬКОЮ)
+        // ============================================================
+        const positionNames = {
+            1: "Юність",
+            2: "Зрілість",
+            3: "Старість",
+            4: "Травма",
+            5: "Ціль",
+            6: "Талант",
+            7: "Місія",
+            8: "Дар",
+            12: "Комфорт",
+            13: "Самооцінка",
+            14: "Враження"
+        };
+
+        // ============================================================
+        // 3. ПЕРЕТВОРЕННЯ НА РИМСЬКЕ
         // ============================================================
         function toRoman(num) {
             const romanMap = {
@@ -559,7 +678,7 @@
         }
 
         // ============================================================
-        // 3. ЛОГІКА РОЗРАХУНКІВ
+        // 4. ЛОГІКА РОЗРАХУНКІВ
         // ============================================================
         function reduceTo22(number) {
             while (number > 22) {
@@ -611,20 +730,21 @@
 
             // ===== МАСИВИ =====
             const mainPositions = [
-                { num: pos1, label: "1", title: "Дитинство" },
-                { num: pos2, label: "2", title: "Зрілість" },
-                { num: pos3, label: "3", title: "Підсумок" },
-                { num: pos4, label: "4", title: "Страхи" },
-                { num: pos5, label: "5", title: "Талант" },
-                { num: pos6, label: "6", title: "Дар" },
-                { num: pos7, label: "7", title: "Місія" },
-                { num: pos8, label: "8", title: "Зверхдар" }
+                { num: pos1, label: "01", key: 1 },
+                { num: pos2, label: "02", key: 2 },
+                { num: pos3, label: "03", key: 3 },
+                { num: pos4, label: "04", key: 4 },
+                { num: pos5, label: "05", key: 5 },
+                { num: pos6, label: "06", key: 6 },
+                { num: pos7, label: "07", key: 7 },
+                { num: pos8, label: "08", key: 8 }
             ];
 
-            // ===== НОВИЙ ПОРЯДОК: 12 окремо, 13 і 14 разом =====
-            const extraPosition12 = { num: pos12, label: "12", title: "Синтез" };
-            const extraPosition13 = { num: pos13, label: "13", title: "Душа" };
-            const extraPosition14 = { num: pos14, label: "14", title: "Шлях" };
+            const extraPositions = [
+                { num: pos12, label: "12", key: 12 },
+                { num: pos13, label: "13", key: 13 },
+                { num: pos14, label: "14", key: 14 }
+            ];
 
             // ===== БУДУЄМО HTML =====
             let html = `
@@ -656,15 +776,12 @@
 
                 <!-- ===== НОВІ ПОЗИЦІЇ (12, 13, 14) ===== -->
                 <div class="row-extra">
-                    <!-- Позиція 12 - окремий рядок -->
                     <div class="row-1-extra">
-                        ${renderCard(extraPosition12, false)}
+                        ${renderCard(extraPositions[0], false)}
                     </div>
-                    
-                    <!-- Позиції 13 та 14 - разом -->
                     <div class="row-2-extra">
-                        ${renderCard(extraPosition13, false)}
-                        ${renderCard(extraPosition14, false)}
+                        ${renderCard(extraPositions[1], false)}
+                        ${renderCard(extraPositions[2], false)}
                     </div>
                 </div>
 
@@ -676,16 +793,44 @@
             resultDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
-        // Функція для рендерингу однієї картки
+        // ============================================================
+        // 5. ФУНКЦІЯ ДЛЯ ВІДОБРАЖЕННЯ ОДНІЄЇ КАРТКИ
+        // ============================================================
         function renderCard(pos, isHighlight) {
-            const name = arcanaNames[pos.num] || `Аркан ${pos.num}`;
+            const data = arcanaData[pos.num] || { name: `Аркан ${pos.num}`, gender: "", genderTag: "", type: "", typeTag: "" };
             const roman = toRoman(pos.num);
+            const posName = positionNames[pos.key] || `Поз. ${pos.label}`;
+
+            // Теги для роду
+            let genderTagClass = '';
+            let genderLabel = data.gender;
+            if (data.genderTag === 'male') genderTagClass = 'tag-male';
+            else if (data.genderTag === 'female') genderTagClass = 'tag-female';
+            else if (data.genderTag === 'neutral') genderTagClass = 'tag-neutral';
+
+            // Теги для типу (Д / М)
+            let typeTagClass = '';
+            let typeLabel = data.type;
+            if (data.typeTag === 'spiritual') typeTagClass = 'tag-spiritual';
+            else if (data.typeTag === 'material') typeTagClass = 'tag-material';
+            else if (data.typeTag === 'neutral-type') typeTagClass = 'tag-neutral-type';
+
+            // Скорочення для типу (Д / М)
+            let typeShort = '';
+            if (data.typeTag === 'spiritual') typeShort = 'Д';
+            else if (data.typeTag === 'material') typeShort = 'М';
+            else typeShort = 'Н';
 
             return `
                 <div class="arcana-card ${isHighlight ? 'highlight' : ''}">
                     <div class="position-label">Поз. ${pos.label}</div>
+                    <div class="position-name">${posName}</div>
                     <div class="roman-number">${roman}</div>
-                    <div class="arcana-name">${name}</div>
+                    <div class="arcana-name">${data.name}</div>
+                    <div class="tags">
+                        <span class="tag ${genderTagClass}">${genderLabel}</span>
+                        <span class="tag ${typeTagClass}">${typeShort}</span>
+                    </div>
                 </div>
             `;
         }
@@ -700,7 +845,7 @@
         }
 
         // ============================================================
-        // 4. АВТОМАТИЧНЕ ПЕРЕХОДЖЕННЯ
+        // 6. АВТОМАТИЧНЕ ПЕРЕХОДЖЕННЯ
         // ============================================================
         document.addEventListener('DOMContentLoaded', function() {
             const dayInput = document.getElementById('day');
